@@ -19,13 +19,10 @@ import {
 } from "@/components/ui/popover"
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export interface PlayerSelectorProps {
   players: { label: string, value: string }[],
-  open: boolean,
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>,
-  value: string,
-  setValue: React.Dispatch<React.SetStateAction<string>>
   unclickedPlaceholder: string,
   clickedPlaceholder: string,
   notFoundPlaceholder: string,
@@ -33,15 +30,13 @@ export interface PlayerSelectorProps {
 
 export function PlayerSelector({
   players,
-  open,
-  setOpen,
-  value,
-  setValue,
   unclickedPlaceholder,
   clickedPlaceholder,
   notFoundPlaceholder,
 }: PlayerSelectorProps) {
   const router = useRouter();
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("")
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
