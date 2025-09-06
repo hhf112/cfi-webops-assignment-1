@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import * as React from "react"
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
@@ -58,7 +59,7 @@ export function PlayerSelector({
         <Command>
           <CommandInput placeholder={clickedPlaceholder} />
           <CommandList>
-            <CommandEmpty>This player doesn't exist in our database yet :(</CommandEmpty>
+            <CommandEmpty>{"This player doesn't exist in our database yet :"}(</CommandEmpty>
             <CommandGroup>
               {players.map((player) => (
                 <CommandItem

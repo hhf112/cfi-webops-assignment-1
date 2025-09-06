@@ -1,16 +1,19 @@
 "use client";
+import { useEffect } from "react";
 import { PlayerSelector } from "./PlayerSelector";
 import type { PlayerSelectorProps } from "./PlayerSelector";
 import { useTheme } from "next-themes";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
+  useEffect(() => console.log(theme), [theme]);
   return (
     <div className="flex flex-col h-screen justify-center items-center">
 
       <button 
-      className="absolute top-0 right-0 p-4 m-2
-      text-4xl ">
+      className="absolute top-0 right-0 p-4 m-2 cursor-pointer hover:scale-105
+      text-4xl "
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
         {theme === "dark" ? "🌙" : "🌞"}
       </button>
 

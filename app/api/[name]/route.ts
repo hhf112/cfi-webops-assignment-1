@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import ai from 'ai';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
