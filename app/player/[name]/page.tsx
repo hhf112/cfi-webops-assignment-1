@@ -3,11 +3,14 @@ import { PlayerSelector } from "@/app/PlayerSelector"
 import BatsmanCharts from "@/components/hrsh/BatsmanCharts";
 import { ChatBox } from "@/components/hrsh/ChatBox";
 import { useParams, useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function Player() {
   const params = useParams();
   const router = useRouter();
   const name = params.name as string;
+
+  const { theme, setTheme } = useTheme();
 
   function getPlayerDescription(name: string) {
     switch (name) {
@@ -47,6 +50,14 @@ Career Span: 2004–2020 (international), ongoing in domestic/T20 leagues`
 
   return (
     <div className="px-40 py-5 flex flex-col h-screen justify-start items-center">
+
+      <button
+        className="absolute top-0 right-0 p-4 m-2 cursor-pointer hover:scale-105
+      text-4xl "
+        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+        {theme === "dark" ? "🌙" : "🌞"}
+      </button>
+
       {/* player selector */}
       <div className="flex-1">
         <PlayerSelector
@@ -85,7 +96,7 @@ Career Span: 2004–2020 (international), ongoing in domestic/T20 leagues`
 
           {/* name and bio*/}
           <div className="flex-5 border p-4 rounded-xl shadow-xs overflow-auto">
-            <h1 className="font-bold font-serif text-2xl text-center text-neutral-800"> {name}</h1>
+            <h1 className="font-bold font-serif text-2xl text-center text-neutral-800 dark:text-white"> {name}</h1>
             <pre className="whitespace-pre-wrap">
               {getPlayerDescription(name)}
             </pre>

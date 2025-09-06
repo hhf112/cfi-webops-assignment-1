@@ -47,7 +47,8 @@ export function PlayerSelector({
           size="lg"
           role="combobox"
           aria-expanded={open}
-          className="w-[500px] h-[50px] justify-between text-sm text-neutral-800 cursor-pointer"
+          className="w-[500px] h-[50px] justify-between text-sm text-neutral-800 dark:text-neutral-100 cursor-pointer"
+
         >
           {value
             ? players.find((player) => player.value === value)?.label

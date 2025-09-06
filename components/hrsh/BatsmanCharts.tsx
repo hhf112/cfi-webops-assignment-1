@@ -80,13 +80,13 @@ export default function BatsmanCharts({ batsman, theme }: BatsmanChartsProps) {
     const barChart = new ChartJS(barRef.current.getContext("2d")!, {
       type: "bar",
       data: { labels, datasets: [{ label: "Stats", data: dataStats, backgroundColor: ["#ff6384", "#36a2eb", "#ffce56", "#4bc0c0", "#9966ff"] }] },
-      options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: { ...commonOptions.plugins?.title, text: `${batsman.name} - Bar Chart` } } },
+      options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: { ...commonOptions.plugins?.title, text: `${batsman.name} - Bar stats` } } },
     });
 
     const lineChart = new ChartJS(lineRef.current.getContext("2d")!, {
       type: "line",
       data: { labels, datasets: [{ label: "Stats", data: dataStats, borderColor: "#ff6384", backgroundColor: "#ff6384", fill: false }] },
-      options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: { ...commonOptions.plugins?.title, text: `${batsman.name} - Line Chart` } } },
+      options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: { ...commonOptions.plugins?.title, text: `${batsman.name} - Line stats` } } },
     });
 
     const pieChart = new ChartJS(pieRef.current.getContext("2d")!, {

@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useState } from "react"
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
+import { useTheme } from "next-themes";
 
 export interface TextBubble {
   type: number,
@@ -26,6 +27,7 @@ export function Alert({ message }: { message: string }) {
 }
 
 export function ChatBox({ inputPlaceholder, name }: ChatBoxProps) {
+  const {theme , setTheme} = useTheme();
   const promptRef = useRef<HTMLInputElement>(null)
   const [chat, setChat] = useState<TextBubble[]>([])
   const [alertMessage, setAlertMessage] = useState("");
@@ -71,11 +73,11 @@ export function ChatBox({ inputPlaceholder, name }: ChatBoxProps) {
           return (
             bubble.type === 0 ? (
               <div className="flex justify-end " key={index}>
-                <p className="p-2 rounded-xl bg-neutral-200"> {bubble.content} </p>
+                <p className="p-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 dark:text-white"> {bubble.content} </p>
               </div>
             ) : (
               <div className="flex justify-start " key={index}>
-                <p className="p-2"> {bubble.content} </p>
+                <p className="p-2 dark:text-white"> {bubble.content} </p>
               </div>
             )
           )
@@ -90,8 +92,8 @@ export function ChatBox({ inputPlaceholder, name }: ChatBoxProps) {
 
         <div
           className="h-ful flex-1 w-4 hover:bg-neutral-200 rounded-lg border border-neutral-300 p-4
-        cursor-pointer duration-75 delay-75 hover:-translate-y-1 hover:translate-x-1 transition-all transform-all">
-          <img src="/send.png"
+        cursor-pointer duration-75 delay-75 bg-white hover:-translate-y-1 hover:translate-x-1 transition-all transform-all">
+          <img src={theme == "dark" ? "/send-dark.png" : "/send.png"}
             className="h-full w-full object-contain "
             onClick={() => sendMessage()} />
         </div>
