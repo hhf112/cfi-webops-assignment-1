@@ -45,6 +45,7 @@ export default function Page() {
           },
         ]}
       />
+
       <div className="absolute bottom-0 my-1 font-mono text-xs text-neutral-700">
         Made by Harsh Tandekar CH23B084
       </div>

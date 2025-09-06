@@ -4,14 +4,16 @@ import BatsmanCharts from "@/components/hrsh/BatsmanCharts";
 import { ChatBox } from "@/components/hrsh/ChatBox";
 import { useParams, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function Player() {
   const params = useParams();
   const router = useRouter();
   const name = params.name as string;
-
+  const [mount, setMount] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  useEffect(()=> setMount(true), [])
   function getPlayerDescription(name: string) {
     switch (name) {
       case "ViratKohli":
@@ -85,7 +87,7 @@ Career Span: 2004–2020 (international), ongoing in domestic/T20 leagues`
       <div className="flex flex-col w-full my-2 h-full">
 
         {/* profile picture and bio */}
-        <div className="flex-3 max-h-2/5 flex w-full items-stretch justify-between gap-2">
+        <div className={`flex-3 max-h-2/5 flex w-full items-stretch justify-between gap-2 ${mount? "translate-0  opacity-100" : "opacity-0 translate-y-2"} transition-all transform-all delay-100 duration-150`}>
 
           {/* picture */}
           <div className="shrink-0 flex-1 border p-1 flex-col rounded-lg shadow-xs">

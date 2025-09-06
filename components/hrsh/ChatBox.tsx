@@ -31,6 +31,8 @@ export function ChatBox({ inputPlaceholder, name }: ChatBoxProps) {
   const promptRef = useRef<HTMLInputElement>(null)
   const [chat, setChat] = useState<TextBubble[]>([])
   const [alertMessage, setAlertMessage] = useState("");
+  const [mount, setMount] = useState(false);
+  useEffect(() => setMount(true), []);
 
   async function sendMessage() {
     if (promptRef.current != null) {
@@ -62,7 +64,7 @@ export function ChatBox({ inputPlaceholder, name }: ChatBoxProps) {
   }
 
   return (
-    <div className="flex flex-col w-full h-full p-2 justify-between gap-1">
+    <div className={`flex flex-col w-full h-full p-2 justify-between gap-1 ${mount? "translate-0  opacity-100" : "opacity-0 translate-y-2"} transition-all transform-all delay-100 duration-150`}>
       {alertMessage.length > 0 && <Alert message={alertMessage} />}
 
 
