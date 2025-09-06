@@ -3,10 +3,19 @@ import { useEffect } from "react";
 import { PlayerSelector } from "./PlayerSelector";
 import type { PlayerSelectorProps } from "./PlayerSelector";
 import { useTheme } from "next-themes";
+import {useState} from "react";
 
 export default function Page() {
+  const [mount, setMount] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
   useEffect(() => console.log(theme), [theme]);
+  if (!mount) return null;
+
   return (
     <div className="flex flex-col h-screen justify-center items-center">
 
